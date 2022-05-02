@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
     <head>
+        <link rel="icon" href="https://www.hs-rm.de/typo3conf/ext/udg_package/Resources/Public/Images/Favicons/favicon.png">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,23 +11,23 @@
         <table>
             <tr>
                 <td>Name</td>
-                <td th:text="${profil.name}"></td>
+                <td th:text="#{profil.name}"></td>
             </tr>
             <tr>
                 <td>Geb.</td>
-                <td th:text="${profil.geburtsdatum}"></td>
+                <td th:text="#{profil.geburtsdatum}"></td>
             </tr>
             <tr>
                 <td>Adresse</td>
-                <td th:text="${profil.adresse}"></td>
+                <td th:text="#{profil.adresse}"></td>
             </tr>
             <tr>
                 <td>eMail</td>
-                <td th:text="${profil.email}"></td>
+                <td th:text="#{profil.email}"></td>
             </tr>
             <tr>
                 <td>Lieblingsfarbe</td>
-                <td th:text="${profil.lieblingsfarbe}"></td>
+                <td th:text="#{profil.lieblingsfarbe}"></td>
             </tr>
         </table>
         <h1>Interessen</h1>
