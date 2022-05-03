@@ -63,19 +63,9 @@ public class BenutzerProfil {
     }
 
     public List<String> getInteressenListe() {
-        List<String> interessen; 
-        if (this.interessen.equals(""))
-            return (interessen = Collections.emptyList());
-        interessen = Arrays.asList(this.interessen.split(","));
-        for (String e : interessen) {
-            while (e.endsWith(" ")) {
-                e = e.substring(0, e.length() - 1);
-            }
-            while (e.startsWith(" ")) {
-                e = e.substring(1, e.length());
-            }
-        }
-        return interessen;
+        if (interessen.isEmpty())
+            return Collections.emptyList();
+        return Arrays.asList(interessen.split("\\s*,\\s*"));
     }
 
     @Override
