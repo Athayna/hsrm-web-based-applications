@@ -35,6 +35,6 @@
         <dl th:each="element : ${profil.getInteressenListe()}">
             <dt th:text="${profil.getInteressenListe.indexOf(element) + 1} + '. ' + ${element}"></dt>
         </dl>
-        <a href="/benutzerprofil/profileditor">Bearbeiten</a>
+        <a href="/benutzerprofil/bearbeiten">Bearbeiten</a>
     </body>
 </html>

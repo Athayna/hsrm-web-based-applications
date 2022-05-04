@@ -8,18 +8,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Ihre Daten</h1>
-        <p>Name</p><br>
-        <input type="text"></input>
-        <p>Geb.</p><br>
-        <input type="datetime-local"></input>
-        <p>Adresse</p><br>
-        <input type="text"></input>
-        <p>eMail</p><br>
-        <input type="text"></input>
-        <p>Lieblingsfarbe</p><br>
-        <input type="color">
-        <p>Interessen (durch Komma getrennt)</p><br>
-        <input type="text"></input>
+        <form th:method="POST" th:object="${profil}">
+            <h1>Ihre Daten</h1>
+            <p>Name</p>
+            <input type="text" th:field="*{name}"></input>
+            <p>Geb.</p>
+            <input type="date" th:field="*{geburtsdatum}"></input>
+            <p>Adresse</p>
+            <input type="text" th:field="*{adresse}"></input>
+            <p>eMail</p>
+            <input type="text" th:field="*{email}"></input>
+            <p>Lieblingsfarbe</p>
+            <input type="color" th:field="*{lieblingsfarbe}">
+            <p>Interessen (durch Komma getrennt)</p>
+            <input type="text" th:field="*{interessen}"></input><br>
+            <button type="submit">Speichern</button>
+        </form>
     </body>
 </html>
