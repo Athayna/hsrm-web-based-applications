@@ -5,8 +5,12 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 public class BenutzerProfil {
     private String name = "";
+    @DateTimeFormat(iso = ISO.DATE)
     private LocalDate geburtsdatum = LocalDate.of(1,1,1);
     private String adresse = "";
     private String email = "";
