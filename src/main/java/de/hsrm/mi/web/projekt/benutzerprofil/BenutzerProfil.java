@@ -5,16 +5,25 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Size;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 public class BenutzerProfil {
+    @Size(min=3, max=60) @NotNull
     private String name = "";
-    @DateTimeFormat(iso = ISO.DATE)
+    @PastOrPresent @NotNull @DateTimeFormat(iso = ISO.DATE)
     private LocalDate geburtsdatum = LocalDate.of(1,1,1);
+    @NotNull
     private String adresse = "";
-    private String email = "";
+    @Email
+    private String email = null;
     private String lieblingsfarbe = "";
+    @NotNull
     private String interessen = "";
 
     //Getters and Setters
