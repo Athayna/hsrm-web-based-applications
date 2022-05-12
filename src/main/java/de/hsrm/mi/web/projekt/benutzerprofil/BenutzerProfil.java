@@ -22,6 +22,7 @@ public class BenutzerProfil {
     private String adresse = "";
     @Email
     private String email = null;
+    @NotNull
     private String lieblingsfarbe = "";
     @NotNull
     private String interessen = "";

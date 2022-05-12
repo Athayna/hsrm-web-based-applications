@@ -13,13 +13,13 @@ import de.hsrm.mi.web.projekt.benutzerprofil.BenutzerProfil;
 
 @Testable
 public class Web_Ueb03_A1_BenutzerProfil {
-    private final String TESTNAME = "Jöndhard";
-    private final String TESTORT = "Waldstraße 17, 99441 Vollradisroda";
+    private final String TESTNAME = "Joendhard";
+    private final String TESTORT = "Waldstrasse 17, 99441 Vollradisroda";
     private final LocalDate TESTDATUM = LocalDate.now();
     private final String TESTEMAIL = "joendhard@mi.hs-rm.de";
     private final String TESTLIEBLINGSFARBE = "#171717";
-    private final String TESTINTERESSEN1 = "hüpfen,gucken,Briefmarken sammeln";
-    private final String TESTINTERESSEN2 = "weit hüpfen, fern sehen  ,  Topflappen häkeln";
+    private final String TESTINTERESSEN1 = "hupfen,gucken,Briefmarken sammeln";
+    private final String TESTINTERESSEN2 = "weit hupfen, fern sehen  ,  Topflappen erzeugen";
     
     BenutzerProfil benutzerprofil = null;
 
@@ -48,7 +48,7 @@ public class Web_Ueb03_A1_BenutzerProfil {
     public void benutzerprofil_equalshashcode() {
         var bp2 = new BenutzerProfil();
         bp2.setName(TESTNAME);
-        bp2.setAdresse("Hauptstraße 17, 12345 Dahannesburg");
+        bp2.setAdresse("Hauptstrasse 17, 12345 Dahannesburg");
         bp2.setGeburtsdatum(TESTDATUM);
         bp2.setEmail("spam@mi.hs-rm.de");
         bp2.setLieblingsfarbe("#010203");

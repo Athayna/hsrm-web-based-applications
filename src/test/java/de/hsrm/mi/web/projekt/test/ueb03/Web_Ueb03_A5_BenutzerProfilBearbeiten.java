@@ -27,19 +27,18 @@ import org.springframework.test.web.servlet.MvcResult;
 import de.hsrm.mi.web.projekt.benutzerprofil.BenutzerProfil;
 import de.hsrm.mi.web.projekt.benutzerprofil.BenutzerprofilController;
 
-// https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/test/web/servlet/request/MockHttpServletRequestBuilder.html
 
 @SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @Testable
-class Web_Ueb03_A5_BenutzerprofilAnsichtBearbeiten {
+class Web_Ueb03_A5_BenutzerProfilBearbeiten {
     private final String TESTNAME = "Joghurta";
-    private final String TESTADRESSE = "Waldstraße 17, 99441 Vollradisroda";
+    private final String TESTADRESSE = "Waldstrasse 17, 99441 Vollradisroda";
     private final String TESTISODATUM = "2017-07-17";
 	private final LocalDate TESTDATUM = LocalDate.of(2017, 7, 17);
     private final String TESTEMAIL = "joghi@mi.hs-rm.de";
-    private final String TESTLIEBLINGSFARBE = "#171717";
-    private final String TESTINTERESSEN = "weit hüpfen, fern sehen  ,  Topflappen häkeln";
+    private final String TESTLIEBLINGSFARBE = "#111222";
+    private final String TESTINTERESSEN = "weit hoppen, fern sehen  ,  Topflappen haekeln";
     
     BenutzerProfil benutzerprofil = null;
 

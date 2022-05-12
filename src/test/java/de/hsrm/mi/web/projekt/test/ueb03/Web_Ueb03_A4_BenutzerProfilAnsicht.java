@@ -31,14 +31,14 @@ import de.hsrm.mi.web.projekt.benutzerprofil.BenutzerprofilController;
 @SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @Testable
-class Web_Ueb03_A4_BenutzerprofilAnsicht {
+class Web_Ueb03_A4_BenutzerProfilAnsicht {
     private final String TESTNAME = "Friedfert";
-    private final String TESTADRESSE = "Waldstraße 17, 99441 Vollradisroda";
+    private final String TESTADRESSE = "Waldstrasse 17, 99441 Vollradisroda";
 	private final LocalDate TESTDATUM = LocalDate.of(2017, 1, 17);
     private final String TESTEMAIL = "friedfert@mi.hs-rm.de";
     private final String TESTLIEBLINGSFARBE = "#171717";
-    private final String TESTINTERESSEN = "sehr weit hüpfen, außerordentlich fern sehen  ,  Topflappen häkeln";
-    private final List<String> TESTINTERESSEN_L = List.of("sehr weit hüpfen", "außerordentlich fern sehen", "Topflappen häkeln");
+    private final String TESTINTERESSEN = "sehr weit hupfen, ausserordentlich fern sehen  ,  Topflappen erzeugen";
+    private final List<String> TESTINTERESSEN_L = List.of("sehr weit hupfen", "ausserordentlich fern sehen", "Topflappen erzeugen");
     
     BenutzerProfil benutzerprofil = null;
 

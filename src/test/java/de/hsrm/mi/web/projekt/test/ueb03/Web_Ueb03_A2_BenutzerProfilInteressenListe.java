@@ -14,15 +14,15 @@ import de.hsrm.mi.web.projekt.benutzerprofil.BenutzerProfil;
 
 @Testable
 public class Web_Ueb03_A2_BenutzerProfilInteressenListe {
-    private final String TESTNAME = "Jöndhard";
-    private final String TESTORT = "Waldstraße 17, 99441 Vollradisroda";
+    private final String TESTNAME = "Joendhard";
+    private final String TESTORT = "Waldstrasse 17, 99441 Vollradisroda";
     private final LocalDate TESTDATUM = LocalDate.now();
     private final String TESTEMAIL = "joendhard@mi.hs-rm.de";
     private final String TESTLIEBLINGSFARBE = "#171717";
-    private final String TESTINTERESSEN_OHNE_SPACES = "hüpfen,gucken,Briefmarken sammeln";
-    private final List<String> TESTINTERESSEN1_OHNE_SPACES_L = List.of("hüpfen", "gucken", "Briefmarken sammeln");
-    private final String TESTINTERESSEN_MIT_SPACES = "weit hüpfen, fern sehen  ,  Topflappen häkeln";
-    private final List<String> TESTINTERESSEN2_MIT_SPACES_L = List.of("weit hüpfen", "fern sehen", "Topflappen häkeln");
+    private final String TESTINTERESSEN_OHNE_SPACES = "hupfen,gucken,Briefmarken sammeln";
+    private final List<String> TESTINTERESSEN1_OHNE_SPACES_L = List.of("hupfen", "gucken", "Briefmarken sammeln");
+    private final String TESTINTERESSEN_MIT_SPACES = "weit hupfen, fern sehen  ,  Topflappen erzeugen";
+    private final List<String> TESTINTERESSEN2_MIT_SPACES_L = List.of("weit hupfen", "fern sehen", "Topflappen erzeugen");
     
     BenutzerProfil benutzerprofil = null;
 
@@ -41,7 +41,8 @@ public class Web_Ueb03_A2_BenutzerProfilInteressenListe {
     @DisplayName("BenutzerProfil: getInteressenListe() liefert bei leerem interessen-String leere Liste")
     public void benutzerprofil_keineinteressen_getinteressenliste() {
         benutzerprofil.setInteressen("");
-        assertThat(benutzerprofil.getInteressenListe().size()).isEqualTo(0);
+        int n = benutzerprofil.getInteressenListe().size();
+        assertThat(n).isEqualTo(0);
     }
 
 

@@ -2,6 +2,8 @@ package de.hsrm.mi.web.projekt.benutzerprofil;
 
 import java.time.LocalDate;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -40,10 +42,9 @@ public class BenutzerprofilController {
     }
 
     @PostMapping("/benutzerprofil/bearbeiten")
-    public String bearbeitet(Model m, @ModelAttribute("profil") BenutzerProfil profil, BindingResult result) {
-        if (result.hasErrors()) {
-            return "benutzerprofil/profilansicht";
-        }
+    public String bearbeitet(Model m, @Valid @ModelAttribute("profil") BenutzerProfil profil, BindingResult result) {
+        if (result.hasErrors())
+            return "benutzerprofil/profileditor";
         m.addAttribute("profil", profil);
         return "redirect:/benutzerprofil";
     }

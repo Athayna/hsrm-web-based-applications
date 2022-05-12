@@ -3,6 +3,7 @@
     <head>
         <title>Profilbearbeitung</title>
         <link rel="icon" type="image/x-icon" href="https://www.hs-rm.de/typo3conf/ext/udg_package/Resources/Public/Images/Favicons/favicon.png">
+        <link rel="stylesheet" type="test/css" th:href="@{profil.css}"/>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,18 +11,54 @@
     <body>
         <form th:method="POST" th:object="${profil}">
             <h1>Ihre Daten</h1>
+
             <p>Name</p>
-            <input type="text" th:field="*{name}"></input>
+            <input type="text" th:field="*{name}" th:errorclass="invalid"></input>
+            <div th:if="${#fields.hasErrors('name')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('name')}" th:text="${err}" class="error"></li>
+                </ul>
+            </div>
+
             <p>Geb.</p>
-            <input type="date" th:field="*{geburtsdatum}"></input>
+            <input type="date" th:field="*{geburtsdatum}" th:errorclass="invalid"></input>
+            <div th:if="${#fields.hasErrors('geburtsdatum')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('geburtsdatum')}" th:text="${err}" class="error"></li>
+                </ul>
+            </div>
+
             <p>Adresse</p>
-            <input type="text" th:field="*{adresse}"></input>
+            <input type="text" th:field="*{adresse}" th:errorclass="invalid"></input>
+            <div th:if="${#fields.hasErrors('adresse')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('adresse')}" th:text="${err}" class="error"></li>
+                </ul>
+            </div>
+
             <p>eMail</p>
-            <input type="text" th:field="*{email}"></input>
+            <input type="text" th:field="*{email}" th:errorclass="invalid"></input>
+            <div th:if="${#fields.hasErrors('email')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('email')}" th:text="${err}" class="error"></li>
+                </ul>
+            </div>
+
             <p>Lieblingsfarbe</p>
-            <input type="color" th:field="*{lieblingsfarbe}">
+            <input type="color" th:field="*{lieblingsfarbe}" th:errorclass="invalid">
+            <div th:if="${#fields.hasErrors('lieblingsfarbe')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('lieblingsfarbe')}" th:text="${err}" class="error"></li>
+                </ul>
+            </div>
+
             <p>Interessen (durch Komma getrennt)</p>
-            <input type="text" th:field="*{interessen}"></input><br>
+            <input type="text" th:field="*{interessen}" th:errorclass="invalid"></input>
+            <div th:if="${#fields.hasErrors('interessen')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('interessen')}" th:text="${err}" class="error"></li>
+                </ul>
+            </div><br>
             <button type="submit">Speichern</button>
         </form>
     </body>
