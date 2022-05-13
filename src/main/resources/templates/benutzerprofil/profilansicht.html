@@ -3,14 +3,17 @@
     <head>
         <title>Profilansicht</title>
         <link rel="icon" type="image/x-icon" href="https://www.hs-rm.de/typo3conf/ext/udg_package/Resources/Public/Images/Favicons/favicon.png">
-        <link rel="stylesheet" type="test/css" href="profil.css"/>
+        <link rel="stylesheet" th:href="@{/profil.css}"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>Ihre Daten</h1>
-        <table>
+        <div class="w3-panel w3-blue" style="width:50%">
+            <h1>Ihre Daten</h1>
+        </div>
+        <table class="w3-table-all w3-hoverable" style="width:50%">
             <tr>
                 <td>Name</td>
                 <td th:text="${profil.name}"></td>
@@ -32,10 +35,12 @@
                 <td th:text="${profil.lieblingsfarbe}"></td>
             </tr>
         </table>
-        <h1>Interessen</h1>
-        <dl th:each="element : ${profil.getInteressenListe()}">
-            <dt th:text="${profil.getInteressenListe.indexOf(element) + 1} + '. ' + ${element}"></dt>
+        <div class="w3-panel w3-blue" style="width:50%">
+            <h1>Interessen</h1>
+        </div>
+        <dl class="w3-ul w3-border w3-hoverable" style="width:50%" th:each="element : ${profil.getInteressenListe()}">
+            <dt class="w3-padding-small" th:text="${profil.getInteressenListe.indexOf(element) + 1} + '. ' + ${element}"></dt>
         </dl>
-        <a href="/benutzerprofil/bearbeiten">Bearbeiten</a>
+        <button href="/benutzerprofil/bearbeiten" class="w3-btn w3-blue"><a href="/benutzerprofil/bearbeiten">Bearbeiten</a></button>
     </body>
 </html>

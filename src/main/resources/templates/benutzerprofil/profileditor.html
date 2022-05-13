@@ -3,17 +3,20 @@
     <head>
         <title>Profilbearbeitung</title>
         <link rel="icon" type="image/x-icon" href="https://www.hs-rm.de/typo3conf/ext/udg_package/Resources/Public/Images/Favicons/favicon.png">
-        <link rel="stylesheet" type="test/css" th:href="@{profil.css}"/>
+        <link rel="stylesheet" th:href="@{/profil.css}"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form th:method="POST" th:object="${profil}">
-            <h1>Ihre Daten</h1>
+        <form class="w3-container" style="width: 50%;" th:method="POST" th:object="${profil}">
+            <div class="w3-panel w3-blue">
+                <h1>Ihre Daten</h1>
+            </div>
 
             <p>Name</p>
-            <input type="text" th:field="*{name}" th:errorclass="invalid"></input>
+            <input type="text" th:field="*{name}" th:errorclass="invalid" class="w3-input w3-border w3-round"></input>
             <div th:if="${#fields.hasErrors('name')}">
                 <ul>
                     <li th:each="err : ${#fields.errors('name')}" th:text="${err}" class="error"></li>
@@ -21,7 +24,7 @@
             </div>
 
             <p>Geb.</p>
-            <input type="date" th:field="*{geburtsdatum}" th:errorclass="invalid"></input>
+            <input type="date" th:field="*{geburtsdatum}" th:errorclass="invalid" class="w3-input w3-border w3-round"></input>
             <div th:if="${#fields.hasErrors('geburtsdatum')}">
                 <ul>
                     <li th:each="err : ${#fields.errors('geburtsdatum')}" th:text="${err}" class="error"></li>
@@ -29,7 +32,7 @@
             </div>
 
             <p>Adresse</p>
-            <input type="text" th:field="*{adresse}" th:errorclass="invalid"></input>
+            <input type="text" th:field="*{adresse}" th:errorclass="invalid" class="w3-input w3-border w3-round"></input>
             <div th:if="${#fields.hasErrors('adresse')}">
                 <ul>
                     <li th:each="err : ${#fields.errors('adresse')}" th:text="${err}" class="error"></li>
@@ -37,7 +40,7 @@
             </div>
 
             <p>eMail</p>
-            <input type="text" th:field="*{email}" th:errorclass="invalid"></input>
+            <input type="text" th:field="*{email}" th:errorclass="invalid" class="w3-input w3-border w3-round"></input>
             <div th:if="${#fields.hasErrors('email')}">
                 <ul>
                     <li th:each="err : ${#fields.errors('email')}" th:text="${err}" class="error"></li>
@@ -45,7 +48,7 @@
             </div>
 
             <p>Lieblingsfarbe</p>
-            <input type="color" th:field="*{lieblingsfarbe}" th:errorclass="invalid">
+            <input type="color" th:field="*{lieblingsfarbe}" th:errorclass="invalid" style="width: 100%;">
             <div th:if="${#fields.hasErrors('lieblingsfarbe')}">
                 <ul>
                     <li th:each="err : ${#fields.errors('lieblingsfarbe')}" th:text="${err}" class="error"></li>
@@ -53,13 +56,13 @@
             </div>
 
             <p>Interessen (durch Komma getrennt)</p>
-            <input type="text" th:field="*{interessen}" th:errorclass="invalid"></input>
+            <input type="text" th:field="*{interessen}" th:errorclass="invalid" class="w3-input w3-border w3-round"></input>
             <div th:if="${#fields.hasErrors('interessen')}">
                 <ul>
                     <li th:each="err : ${#fields.errors('interessen')}" th:text="${err}" class="error"></li>
                 </ul>
             </div><br>
-            <button type="submit">Speichern</button>
+            <button type="submit" class="w3-btn w3-blue">Speichern</button>
         </form>
     </body>
 </html>
