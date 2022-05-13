@@ -1,7 +1,12 @@
 .invalid {
+    border-width: 2px;
     border-color: red;
 }
 
 .error {
     color: red;
+}
+
+p {
+    font-weight: bold;
 }
