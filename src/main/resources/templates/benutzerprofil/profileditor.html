@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Profilbearbeitung</title>
+        <title th:text="#{profilbearbeiten.titel}">Profilbearbeitung</title>
         <link rel="icon" type="image/x-icon" href="https://www.hs-rm.de/typo3conf/ext/udg_package/Resources/Public/Images/Favicons/favicon.png">
         <link rel="stylesheet" th:href="@{/profil.css}"/>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -12,10 +12,14 @@
     <body>
         <form class="w3-container" style="width: 50%;" th:method="POST" th:object="${profil}">
             <div class="w3-panel w3-blue">
-                <h1>Ihre Daten</h1>
+                <h1 th:text="#{profilbearbeiten.titel}"></h1>
+                <a th:href="@{sprache=en}">EN</a>
+                <a th:href="@{sprache=de}">DE</a>
+                <a th:href="@{sprache=nl}">NL</a>
             </div>
+            <h1 th:text="#{profil.ihredaten}">Ihre Daten</h1>
 
-            <p>Name</p>
+            <p th:text="#{profil.name}">Name</p>
             <input type="text" th:field="*{name}" th:errorclass="invalid" class="w3-input w3-border w3-round"></input>
             <div th:if="${#fields.hasErrors('name')}">
                 <ul>
@@ -23,7 +27,7 @@
                 </ul>
             </div>
 
-            <p>Geb.</p>
+            <p th:text="#{profil.geburtsdatum}">Geb.</p>
             <input type="date" th:field="*{geburtsdatum}" th:errorclass="invalid" class="w3-input w3-border w3-round"></input>
             <div th:if="${#fields.hasErrors('geburtsdatum')}">
                 <ul>
@@ -31,7 +35,7 @@
                 </ul>
             </div>
 
-            <p>Adresse</p>
+            <p th:text="#{profil.adresse}">Adresse</p>
             <input type="text" th:field="*{adresse}" th:errorclass="invalid" class="w3-input w3-border w3-round"></input>
             <div th:if="${#fields.hasErrors('adresse')}">
                 <ul>
@@ -39,7 +43,7 @@
                 </ul>
             </div>
 
-            <p>eMail</p>
+            <p th:text="#{profil.email}">eMail</p>
             <input type="text" th:field="*{email}" th:errorclass="invalid" class="w3-input w3-border w3-round"></input>
             <div th:if="${#fields.hasErrors('email')}">
                 <ul>
@@ -47,7 +51,7 @@
                 </ul>
             </div>
 
-            <p>Lieblingsfarbe</p>
+            <p th:text="#{profil.lieblingsfarbe}">Lieblingsfarbe</p>
             <input type="color" th:field="*{lieblingsfarbe}" th:errorclass="invalid" style="width: 100%;">
             <div th:if="${#fields.hasErrors('lieblingsfarbe')}">
                 <ul>
@@ -55,14 +59,15 @@
                 </ul>
             </div>
 
-            <p>Interessen (durch Komma getrennt)</p>
+            <p th:text="#{profilbearbeiten.interessen}">Interessen (durch Komma getrennt)</p>
             <input type="text" th:field="*{interessen}" th:errorclass="invalid" class="w3-input w3-border w3-round"></input>
             <div th:if="${#fields.hasErrors('interessen')}">
                 <ul>
                     <li th:each="err : ${#fields.errors('interessen')}" th:text="${err}" class="error"></li>
                 </ul>
             </div><br>
-            <button type="submit" class="w3-btn w3-blue">Speichern</button>
+            <button type="submit" class="w3-btn w3-blue" th:text="#{profil.speichern}">Speichern</button>
+            <button type="reset" class="w3-btn w3-blue" th:text="#{profil.abbrechen}">Abbrechen</button>
         </form>
     </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Profilansicht</title>
+        <title th:text="#{profilansicht.titel}">Profilansicht</title>
         <link rel="icon" type="image/x-icon" href="https://www.hs-rm.de/typo3conf/ext/udg_package/Resources/Public/Images/Favicons/favicon.png">
         <link rel="stylesheet" th:href="@{/profil.css}"/>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -11,36 +11,38 @@
     </head>
     <body>
         <div class="w3-panel w3-blue" style="width:50%">
-            <h1>Ihre Daten</h1>
+            <h1 th:text="#{profilansicht.titel}"></h1>
+            <a th:href="@{sprache=en}">EN</a>
+            <a th:href="@{sprache=de}">DE</a>
+            <a th:href="@{sprache=nl}">NL</a>
         </div>
+        <h1 th:text="#{profil.ihredaten}">Ihre Daten</h1>
         <table class="w3-table-all w3-hoverable" style="width:50%">
             <tr>
-                <td>Name</td>
+                <td th:text="#{profil.name}">Name</td>
                 <td th:text="${profil.name}"></td>
             </tr>
             <tr>
-                <td>Geb.</td>
+                <td th:text="#{profil.geburtsdatum}">Geb.</td>
                 <td th:text="${profil.geburtsdatum}"></td>
             </tr>
             <tr>
-                <td>Adresse</td>
+                <td th:text="#{profil.adresse}">Adresse</td>
                 <td th:text="${profil.adresse}"></td>
             </tr>
             <tr>
-                <td>eMail</td>
+                <td th:text="#{profil.email}">eMail</td>
                 <td th:text="${profil.email}"></td>
             </tr>
             <tr>
-                <td>Lieblingsfarbe</td>
+                <td th:text="#{profil.lieblingsfarbe}">Lieblingsfarbe</td>
                 <td th:text="${profil.lieblingsfarbe}"></td>
             </tr>
         </table>
-        <div class="w3-panel w3-blue" style="width:50%">
-            <h1>Interessen</h1>
-        </div>
+        <h1 th:text="#{profil.interessen}">Interessen</h1>
         <dl class="w3-ul w3-border w3-hoverable" style="width:50%" th:each="element : ${profil.getInteressenListe()}">
             <dt class="w3-padding-small" th:text="${profil.getInteressenListe.indexOf(element) + 1} + '. ' + ${element}"></dt>
         </dl>
-        <button href="/benutzerprofil/bearbeiten" class="w3-btn w3-blue"><a href="/benutzerprofil/bearbeiten">Bearbeiten</a></button>
+        <button href="/benutzerprofil/bearbeiten" class="w3-btn w3-blue"><a href="/benutzerprofil/bearbeiten" th:text="#{profil.bearbeiten}">Bearbeiten</a></button>
     </body>
 </html>

@@ -13,6 +13,8 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import de.hsrm.mi.web.projekt.validierung.Bunt;
+
 public class BenutzerProfil {
     @Size(min=3, max=60) @NotNull
     private String name = "";
@@ -22,7 +24,7 @@ public class BenutzerProfil {
     private String adresse = "";
     @Email
     private String email = null;
-    @NotNull
+    @NotNull @Bunt(message="{bunt.errormessage}")
     private String lieblingsfarbe = "";
     @NotNull
     private String interessen = "";

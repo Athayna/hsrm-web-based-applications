@@ -1,0 +1,15 @@
+propertyname;de;en;nl
+profil.ihredaten;Ihre Daten;Your data;Uw gegevens
+profil.name;Name;Name;Naam
+profil.geburtsdatum;Geburtsdatum;Date of birth;Geboortedatum
+profil.adresse;Anschrift;Street address;Adres
+profil.email;Digitale Postanschrift;EMail address;Digitaal postadres
+profil.lieblingsfarbe;Lieblingsfarbe;Favourite colour;Favoriete kleur
+profil.interessen;Hobbies;Hobbies;Hobby's
+profil.speichern;abspeichern;save;opslaan
+profil.abbrechen;abbrechen;cancel;anuleren
+profil.bearbeiten;bearbeiten;edit;bewerken
+profilansicht.titel;Benutzerprofil;User profile;Gebruikersprofiel
+profilbearbeiten.titel;Benutzerprofil bearbeiten;Edit user profile;Gebruikersprofiel wijzigen
+profilbearbeiten.interessen;Hobbies (durch Kommata getrennt);Hobbies (comma-separated list);Hobbies (gescheiden door komma's)
+bunt.errormessage;Diese Farbe enthält zwei gleiche R/G/B-Anteile und ist daher nicht bunt genug;This color contains two matching R/G/B components and is therefore not colorful enough;Deze kleur bevat twee gelijke R/G/B componenten en is daarom niet kleurrijk genoeg
