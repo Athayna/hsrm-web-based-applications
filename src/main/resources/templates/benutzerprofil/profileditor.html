@@ -13,9 +13,9 @@
         <form class="w3-container" style="width: 50%;" th:method="POST" th:object="${profil}">
             <div class="w3-panel w3-blue">
                 <h1 th:text="#{profilbearbeiten.titel}"></h1>
-                <a th:href="@{sprache=en}">EN</a>
-                <a th:href="@{sprache=de}">DE</a>
-                <a th:href="@{sprache=nl}">NL</a>
+                <a th:href="@{?sprache=en}">EN</a>
+                <a th:href="@{?sprache=de}">DE</a>
+                <a th:href="@{?sprache=nl}">NL</a>
             </div>
             <h1 th:text="#{profil.ihredaten}">Ihre Daten</h1>
 
