@@ -5,6 +5,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Version;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
@@ -15,7 +19,12 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import de.hsrm.mi.web.projekt.validierung.Bunt;
 
+@Entity
 public class BenutzerProfil {
+    @Id @GeneratedValue
+    private long id;
+    @Version
+    private long version;
     @Size(min=3, max=60) @NotNull
     private String name = "";
     @PastOrPresent @NotNull @DateTimeFormat(iso = ISO.DATE)
@@ -84,10 +93,19 @@ public class BenutzerProfil {
         return Arrays.asList(interessen.split("\\s*,\\s*"));
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public long getVersion() {
+        return version;
+    }
+
     @Override
     public String toString() {
-        return "BenutzerProfil [adresse=" + adresse + ", email=" + email + ", geburtsdatum=" + geburtsdatum
-                + ", interessen=" + interessen + ", lieblingsfarbe=" + lieblingsfarbe + ", name=" + name + "]";
+        return "BenutzerProfil [adresse=" + adresse + ", email=" + email + ", geburtsdatum=" + geburtsdatum + ", id="
+                + id + ", interessen=" + interessen + ", lieblingsfarbe=" + lieblingsfarbe + ", name=" + name
+                + ", version=" + version + "]";
     }
 
     @Override
