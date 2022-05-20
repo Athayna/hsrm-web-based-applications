@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="#{profilliste.titel}">Profilansicht</title>
+        <link rel="icon" type="image/x-icon" href="https://www.hs-rm.de/typo3conf/ext/udg_package/Resources/Public/Images/Favicons/favicon.png">
+        <link rel="stylesheet" th:href="@{/profil.css}"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="w3-panel w3-blue" style="width:50%">
+            <h1 th:text="#{profilliste.titel}"></h1>
+            <a th:href="@{?sprache=en}">EN</a>
+            <a th:href="@{?sprache=de}">DE</a>
+            <a th:href="@{?sprache=nl}">NL</a>
+        </div>
+
+        <table class="w3-table-all w3-hoverable" style="width:50%">
+            <thead>
+                <th th:text="#{profilliste.tab.name}"></th>
+                <th th:text="#{profilliste.tab.geburtsdatum}"></th>
+                <th th:text="#{profilliste.tab.email}"></th>
+                <th th:text="#{profilliste.tab.adresse}"></th>
+                <th th:text="#{profilliste.tab.loeschen}"></th>
+            </thead>
+            <tbody>
+                <tr th:each="e : ${profilliste}">
+                    <td th:text="${e.name}"></td>
+                    <td th:text="${e.geburtsdatum}"></td>
+                    <td th:text="${e.email}"></td>
+                    <td th:text="${e.adresse}"></td>
+                    <button><a href="@{?op=loeschen&id=}">X</a></button>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

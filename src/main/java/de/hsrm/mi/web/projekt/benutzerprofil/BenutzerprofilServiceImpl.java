@@ -7,7 +7,9 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BenutzerprofilServiceImpl implements BenutzerprofilService{
     @Autowired
     BenutzerprofilRepository benRep;

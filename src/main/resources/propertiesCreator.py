@@ -1,7 +1,7 @@
 import csv
 import shutil
 
-filename = "./src/main/resources/locale/ueb04-uebersetzungen.csv"
+filename = "./src/main/resources/uebersetzungen.csv"
 
 fields = []
 rows = []
@@ -16,7 +16,7 @@ with open(filename, 'r') as csvfile:
 
 #write and save property files
 for i in range(1, len(fields)):
-    filename = "./src/main/resources/locale/messages_" + fields[i] + ".properties"
+    filename = "./src/main/resources/messages_" + fields[i] + ".properties"
 
     with open(filename, 'w') as file:
         for row in rows:
@@ -36,4 +36,4 @@ with open('ueb04-uebersetzungen.csv') as csvfile:
 """
 
 #create fallback property file
-shutil.copy("./src/main/resources/locale/messages_en.properties", "./src/main/resources/locale/messages.properties")
+shutil.copy("./src/main/resources/messages_en.properties", "./src/main/resources/messages.properties")

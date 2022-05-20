@@ -9,7 +9,24 @@ profil.interessen;Hobbies;Hobbies;Hobby's
 profil.speichern;abspeichern;save;opslaan
 profil.abbrechen;abbrechen;cancel;anuleren
 profil.bearbeiten;bearbeiten;edit;bewerken
+profil.meinstandort;Mein Standort;My location;Mijn locatie
 profilansicht.titel;Benutzerprofil;User profile;Gebruikersprofiel
+profilansicht.endsession;Sitzung beenden;end session;sessie sluiten
 profilbearbeiten.titel;Benutzerprofil bearbeiten;Edit user profile;Gebruikersprofiel wijzigen
 profilbearbeiten.interessen;Hobbies (durch Kommata getrennt);Hobbies (comma-separated list);Hobbies (gescheiden door komma's)
+profilliste.titel;Benutzerprofil-Liste;List of User Profiles;Lijstje van Gebruikersprofielen
+profilliste.tab.name;Name;Name;Naam
+profilliste.tab.geburtsdatum;Geb.;born;geb
+profilliste.tab.email;EPost;EMail;email
+profilliste.tab.adresse;aus;from;uit
+profilliste.tab.loeschen;löschen;delete;wissen
+profil.angebote.titel;Angebote;Offerings;Aanbiedingen
+profil.angebote.anlegen;neu;new;nieuw
+angebotsliste.titel;Ihre Angebote;Your offerings;Jouw Aanbiedingen
+angebot.editor.titel;Angebot bearbeiten;Edit offering;Aanbieding bewerken
+angebot.editor.beschreibung;Beschreibung;Description;Beschrijving
+angebot.editor.mindestpreis;Mindestpreis;Minimum price;Minimumprijs
+angebot.editor.ablaufzeitpunkt;Angebotsende;End of offer;Einde van het aanbot
+angebot.editor.abholort;Abholort;Pick-up location;Verzamellocatie
+angebot.editor.speichern;speichern;save;opslaan
 bunt.errormessage;Diese Farbe enthält zwei gleiche R/G/B-Anteile und ist daher nicht bunt genug;This color contains two matching R/G/B components and is therefore not colorful enough;Deze kleur bevat twee gelijke R/G/B componenten en is daarom niet kleurrijk genoeg

@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +18,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 @SessionAttributes(names = {"profil"})
 public class BenutzerprofilController {
+    @Autowired
+    BenutzerprofilService bService;
+
     Logger logger = LoggerFactory.getLogger(BenutzerprofilController.class);
 
     @ModelAttribute("profil")
@@ -41,11 +45,18 @@ public class BenutzerprofilController {
         return "/benutzerprofil/profileditor";
     }
 
+    @GetMapping("/benutzerprofil/liste")
+    public String liste(Model m) {
+        m.addAttribute("profilliste", bService.alleBenutzerProfile());
+        return "/benutzerprofil/profilliste";
+    }
+
     @PostMapping("/benutzerprofil/bearbeiten")
     public String bearbeitet(Model m, @Valid @ModelAttribute("profil") BenutzerProfil profil, BindingResult result) {
         if (result.hasErrors())
             return "benutzerprofil/profileditor";
-        m.addAttribute("profil", profil);
+        BenutzerProfil sProfil = bService.speichereBenutzerProfil(profil);
+        m.addAttribute("profil", sProfil);
         return "redirect:/benutzerprofil";
     }
 }
