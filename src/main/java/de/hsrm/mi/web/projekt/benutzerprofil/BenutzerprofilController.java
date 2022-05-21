@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
@@ -46,7 +47,17 @@ public class BenutzerprofilController {
     }
 
     @GetMapping("/benutzerprofil/liste")
-    public String liste(Model m) {
+    public String liste(Model m, @RequestParam(required = false) String op, @RequestParam(required = false) Long id) {
+        if(op != null) {
+            if (op.equals("loeschen")) {
+                bService.loescheBenutzerProfilMitId(id);
+                m.addAttribute("profilliste", bService.alleBenutzerProfile());
+                return "redirect:/benutzerprofil/liste";
+            } else if (op.equals("bearbeiten")) {
+                m.addAttribute("profil", bService.holeBenutzerProfilMitId(id).get());
+                return "redirect:/benutzerprofil/bearbeiten";
+            }
+        }
         m.addAttribute("profilliste", bService.alleBenutzerProfile());
         return "/benutzerprofil/profilliste";
     }

@@ -27,11 +27,11 @@
             </thead>
             <tbody>
                 <tr th:each="e : ${profilliste}">
-                    <td th:text="${e.name}"></td>
+                    <td><a th:href="@{?op=bearbeiten&id=} + ${e.id}" th:text="${e.name}"></a></td>
                     <td th:text="${e.geburtsdatum}"></td>
                     <td th:text="${e.email}"></td>
                     <td th:text="${e.adresse}"></td>
-                    <button><a href="@{?op=loeschen&id=}">X</a></button>
+                    <td><button><a th:href="@{?op=loeschen&id=} + ${e.id}">X</a></button></td>
                 </tr>
             </tbody>
         </table>
