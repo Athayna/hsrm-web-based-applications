@@ -37,6 +37,7 @@ public class BenutzerProfil {
     private String lieblingsfarbe = "";
     @NotNull
     private String interessen = "";
+    double lat, lon;
 
     //Getters and Setters
     public String getName() {
@@ -101,11 +102,27 @@ public class BenutzerProfil {
         return version;
     }
 
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLon() {
+        return lon;
+    }
+
+    public void setLon(double lon) {
+        this.lon = lon;
+    }
+
     @Override
     public String toString() {
         return "BenutzerProfil [adresse=" + adresse + ", email=" + email + ", geburtsdatum=" + geburtsdatum + ", id="
-                + id + ", interessen=" + interessen + ", lieblingsfarbe=" + lieblingsfarbe + ", name=" + name
-                + ", version=" + version + "]";
+                + id + ", interessen=" + interessen + ", lat=" + lat + ", lieblingsfarbe=" + lieblingsfarbe + ", lon="
+                + lon + ", name=" + name + ", version=" + version + "]";
     }
 
     @Override
