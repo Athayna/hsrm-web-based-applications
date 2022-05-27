@@ -42,7 +42,7 @@ public class BenutzerProfil {
     @NotNull
     private String interessen = "";
     private double lat, lon;
-    @OneToMany(mappedBy = "profil", orphanRemoval = true, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "anbieter", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Angebot> angebot = new ArrayList<Angebot>();
 
     //Getters and Setters

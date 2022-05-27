@@ -1,5 +1,6 @@
 package de.hsrm.mi.web.projekt.benutzerprofil;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +25,7 @@ public class BenutzerprofilServiceImpl implements BenutzerprofilService{
 
     @Override @Transactional
     public BenutzerProfil speichereBenutzerProfil(BenutzerProfil bp) {
-        if (gServiceImpl.findeAdressInfo(bp.getAdresse()) == null) {
+        if (gServiceImpl.findeAdressInfo(bp.getAdresse()).isEmpty()) {
             bp.setLon(0);
             bp.setLat(0);
         } else {
@@ -53,7 +54,7 @@ public class BenutzerprofilServiceImpl implements BenutzerprofilService{
 
     @Override @Transactional
     public void fuegeAngebotHinzu(long id, Angebot angebot) {
-        if (angebot.getAbholort() == null) {
+        if (angebot.getAbholort() == null || gServiceImpl.findeAdressInfo(angebot.getAbholort()).isEmpty()) {
             angebot.setLon(0);
             angebot.setLat(0);
         } else {
