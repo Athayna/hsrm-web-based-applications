@@ -1,13 +1,16 @@
 package de.hsrm.mi.web.projekt.benutzerprofil;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Version;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -17,6 +20,7 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import de.hsrm.mi.web.projekt.angebot.Angebot;
 import de.hsrm.mi.web.projekt.validierung.Bunt;
 
 @Entity
@@ -37,7 +41,9 @@ public class BenutzerProfil {
     private String lieblingsfarbe = "";
     @NotNull
     private String interessen = "";
-    double lat, lon;
+    private double lat, lon;
+    @OneToMany(mappedBy = "profil", orphanRemoval = true, cascade = CascadeType.ALL)
+    private List<Angebot> angebot = new ArrayList<Angebot>();
 
     //Getters and Setters
     public String getName() {
@@ -116,6 +122,10 @@ public class BenutzerProfil {
 
     public void setLon(double lon) {
         this.lon = lon;
+    }
+
+    public List<Angebot> getAngebote() {
+        return angebot;
     }
 
     @Override

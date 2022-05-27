@@ -43,7 +43,7 @@
         <dl class="w3-ul w3-border w3-hoverable" style="width:50%" th:each="element : ${profil.getInteressenListe()}">
             <dt class="w3-padding-small" th:text="${profil.getInteressenListe.indexOf(element) + 1} + '. ' + ${element}"></dt>
         </dl>
-        <button href="/benutzerprofil/bearbeiten" class="w3-btn w3-blue"><a href="/benutzerprofil/bearbeiten" th:text="#{profil.bearbeiten}"></a></button>
-        <button href="/benutzerprofil/bearbeiten" class="w3-btn w3-blue"><a th:href="@{https://www.openstreetmap.org/#map=17/} + ${profil.lat} + '/' + ${lon}" target="_blank" th:text="#{profil.meinstandort}"></a></button>
+        <button class="w3-btn w3-blue"><a href="/benutzerprofil/bearbeiten" th:text="#{profil.bearbeiten}"></a></button>
+        <button class="w3-btn w3-blue"><a th:href="@{https://www.openstreetmap.org/#map=17/} + ${profil.lat} + '/' + ${profil.lon}" target="_blank" th:text="#{profil.meinstandort}"></a></button>
     </body>
 </html>
