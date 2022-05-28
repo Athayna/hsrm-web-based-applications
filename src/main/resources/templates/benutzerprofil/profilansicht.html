@@ -45,5 +45,12 @@
         </dl>
         <button class="w3-btn w3-blue"><a href="/benutzerprofil/bearbeiten" th:text="#{profil.bearbeiten}"></a></button>
         <button class="w3-btn w3-blue"><a th:href="@{https://www.openstreetmap.org/#map=17/} + ${profil.lat} + '/' + ${profil.lon}" target="_blank" th:text="#{profil.meinstandort}"></a></button>
+        <div th:if="${profil.id != null}">
+            <h1 th:text="#{angebotsliste.titel}"></h1>
+            <dl class="w3-ul w3-border w3-hoverable" style="width:50%" th:each="element : ${profil.getAngebote()}">
+                <dt class="w3-padding-small" th:text="${profil.getAngebote.indexOf(element) + 1} + '. ' + ${element.beschreibung} + ' ' + #{profil.angebote.fuer} + ' ' + ${element.mindestpreis} + #{profil.angebote.waerung} + ' (' + #{profil.angebote.bis} + ' ' + ${element.ablaufzeitpunkt} + ')'"></dt>
+            </dl>
+            <button class="w3-btn w3-blue"><a href="/benutzerprofil/angebot" th:text="#{profil.angebote.anlegen}"></a></button>
+        </div>
     </body>
 </html>

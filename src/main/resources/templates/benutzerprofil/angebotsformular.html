@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="#{angebot.editor.titel}"></title>
+        <link rel="icon" type="image/x-icon" href="https://www.hs-rm.de/typo3conf/ext/udg_package/Resources/Public/Images/Favicons/favicon.png">
+        <link rel="stylesheet" th:href="@{/profil.css}"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form class="w3-container" style="width: 50%;" th:method="POST" th:object="${angebot}">
+            <div class="w3-panel w3-blue">
+                <h1 th:text="#{angebot.editor.titel}"></h1>
+                <a th:href="@{?sprache=en}">EN</a>
+                <a th:href="@{?sprache=de}">DE</a>
+                <a th:href="@{?sprache=nl}">NL</a>
+            </div>
+            <h1 th:text="#{angebot.editor.titel}"></h1>
+
+            <p th:text="#{angebot.editor.beschreibung}"></p>
+            <input type="text" th:field="*{beschreibung}" th:errorclass="invalid" class="w3-input w3-border w3-round"></input>
+            <div th:if="${#fields.hasErrors('beschreibung')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('beschreibung')}" th:text="${err}" class="error"></li>
+                </ul>
+            </div>
+
+            <p th:text="#{angebot.editor.mindestpreis}"></p>
+            <input type="number" th:field="*{mindestpreis}" th:errorclass="invalid" class="w3-input w3-border w3-round"></input>
+            <div th:if="${#fields.hasErrors('mindestpreis')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('mindestpreis')}" th:text="${err}" class="error"></li>
+                </ul>
+            </div>
+
+            <p th:text="#{angebot.editor.ablaufzeitpunkt}"></p>
+            <input type="datetime-local" th:field="*{ablaufzeitpunkt}" th:errorclass="invalid" class="w3-input w3-border w3-round"></input>
+            <div th:if="${#fields.hasErrors('ablaufzeitpunkt')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('ablaufzeitpunkt')}" th:text="${err}" class="error"></li>
+                </ul>
+            </div>
+
+            <p th:text="#{angebot.editor.abholort}"></p>
+            <input type="text" th:field="*{abholort}" th:errorclass="invalid" class="w3-input w3-border w3-round"></input>
+            <div th:if="${#fields.hasErrors('abholort')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('abholort')}" th:text="${err}" class="error"></li>
+                </ul>
+            </div><br>
+            <button type="submit" class="w3-btn w3-blue" th:text="#{angebot.editor.speichern}"></button>
+            <button type="reset" class="w3-btn w3-blue" th:text="#{profil.abbrechen}"></button>
+        </form>
+    </body>
+</html>

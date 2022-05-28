@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -42,7 +43,7 @@ public class BenutzerProfil {
     @NotNull
     private String interessen = "";
     private double lat, lon;
-    @OneToMany(mappedBy = "anbieter", orphanRemoval = true, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "anbieter", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Angebot> angebot = new ArrayList<Angebot>();
 
     //Getters and Setters

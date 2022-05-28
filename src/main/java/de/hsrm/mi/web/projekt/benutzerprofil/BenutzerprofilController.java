@@ -3,6 +3,7 @@ package de.hsrm.mi.web.projekt.benutzerprofil;
 import java.time.LocalDate;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,9 +13,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import de.hsrm.mi.web.projekt.angebot.Angebot;
 
 @Controller
 @SessionAttributes(names = {"profil"})
@@ -62,12 +66,36 @@ public class BenutzerprofilController {
         return "/benutzerprofil/profilliste";
     }
 
+    @GetMapping("/benutzerprofil/angebot")
+    public String angebot(Model m) {
+        m.addAttribute("angebot", new Angebot());
+        return "benutzerprofil/angebotsformular";
+    }
+
+    @GetMapping("/benutzerprofil/angebot/{id}/del")
+    public String angebotLoeschen(Model m, @PathVariable Long id) {
+        bService.loescheAngebot(id);
+        //TODO: update session attribute
+        //m.addAttribute("profil", bService.holeBenutzerProfilMitId(id))
+        return "redirect:/benutzerprofil";
+    }
+
     @PostMapping("/benutzerprofil/bearbeiten")
     public String bearbeitet(Model m, @Valid @ModelAttribute("profil") BenutzerProfil profil, BindingResult result) {
         if (result.hasErrors())
             return "benutzerprofil/profileditor";
         BenutzerProfil sProfil = bService.speichereBenutzerProfil(profil);
         m.addAttribute("profil", sProfil);
+        return "redirect:/benutzerprofil";
+    }
+
+    @PostMapping("/benutzerprofil/angebot")
+    public String angebotsformular(Model m, @Valid @ModelAttribute("angebot") Angebot angebot, BindingResult result) {
+        if (result.hasErrors())
+            return "benutzerprofil/angebotsformular";
+        long bId = ((BenutzerProfil)m.getAttribute("profil")).getId();
+        bService.fuegeAngebotHinzu(bId, angebot);
+        m.addAttribute("profil", bService.holeBenutzerProfilMitId(bId).get());
         return "redirect:/benutzerprofil";
     }
 }

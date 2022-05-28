@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Version;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -21,7 +23,7 @@ public class Angebot {
     private long version;
     private String beschreibung = "";
     private long mindestpreis = 0;
-    @DateTimeFormat(iso=ISO.DATE_TIME)
+    @FutureOrPresent @NotNull @DateTimeFormat(iso=ISO.DATE_TIME)
     private LocalDateTime ablaufzeitpunkt = LocalDateTime.now();
     private String abholort = "";
     private double lat, lon;

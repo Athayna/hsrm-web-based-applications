@@ -1,6 +1,5 @@
 package de.hsrm.mi.web.projekt.benutzerprofil;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -69,16 +68,10 @@ public class BenutzerprofilServiceImpl implements BenutzerprofilService{
 
     @Override
     public void loescheAngebot(long id) {
-        List<BenutzerProfil> bpList = alleBenutzerProfile();
-        loop:
-        for (BenutzerProfil bp : bpList) {
-            for (Angebot angebot : bp.getAngebote()) {
-                if (angebot.getId() == id) {
-                    bp.getAngebote().remove(angebot);
-                    break loop;
-                }
-            }
-        }
+        Angebot an = anRep.getById(id);
+        BenutzerProfil bp = an.getAnbieter();
+        bp.getAngebote().remove(an);
         anRep.deleteById(id);
+        benRep.save(bp);
     }
 }
