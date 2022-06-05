@@ -3,7 +3,6 @@ package de.hsrm.mi.web.projekt.benutzerprofil;
 import java.time.LocalDate;
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,12 +18,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import de.hsrm.mi.web.projekt.angebot.Angebot;
+import de.hsrm.mi.web.projekt.angebot.AngebotRepository;
 
 @Controller
 @SessionAttributes(names = {"profil"})
 public class BenutzerprofilController {
     @Autowired
     BenutzerprofilService bService;
+    @Autowired
+    BenutzerprofilRepository benRep;
+    @Autowired
+    AngebotRepository anRep;
 
     Logger logger = LoggerFactory.getLogger(BenutzerprofilController.class);
 
@@ -74,9 +78,9 @@ public class BenutzerprofilController {
 
     @GetMapping("/benutzerprofil/angebot/{id}/del")
     public String angebotLoeschen(Model m, @PathVariable Long id) {
+        long bpId = anRep.findById(id).get().getAnbieter().getId();
         bService.loescheAngebot(id);
-        //TODO: update session attribute
-        //m.addAttribute("profil", bService.holeBenutzerProfilMitId(id))
+        m.addAttribute("profil", bService.holeBenutzerProfilMitId(bpId).get());
         return "redirect:/benutzerprofil";
     }
 

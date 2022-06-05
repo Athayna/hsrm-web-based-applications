@@ -61,17 +61,29 @@ public class BenutzerprofilServiceImpl implements BenutzerprofilService{
             angebot.setLat(gServiceImpl.findeAdressInfo(angebot.getAbholort()).get(0).lat());
         }
         BenutzerProfil bp = holeBenutzerProfilMitId(id).get();
-        bp.getAngebote().add(angebot);
-        angebot.setAnbieter(bp);
+        if(!bp.getAngebote().contains(angebot)) {
+            bp.getAngebote().add(angebot);
+            angebot.setAnbieter(bp);
+        }
         benRep.save(bp);
     }
 
-    @Override
+    @Override @Transactional
     public void loescheAngebot(long id) {
         Angebot an = anRep.getById(id);
         BenutzerProfil bp = an.getAnbieter();
         bp.getAngebote().remove(an);
         anRep.deleteById(id);
         benRep.save(bp);
+    }
+
+    @Override @Transactional
+    public List<Angebot> alleAngebote() {
+        return anRep.findAll();
+    }
+
+    @Override @Transactional
+    public Optional<Angebot> findeAngebotMitId(long angebotid) {
+        return anRep.findById(angebotid);
     }
 }

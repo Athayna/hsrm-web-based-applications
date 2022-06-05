@@ -1,11 +1,16 @@
 package de.hsrm.mi.web.projekt.angebot;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Version;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
@@ -14,6 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import de.hsrm.mi.web.projekt.benutzerprofil.BenutzerProfil;
+import de.hsrm.mi.web.projekt.gebot.Gebot;
 
 @Entity
 public class Angebot {
@@ -29,6 +35,8 @@ public class Angebot {
     private double lat, lon;
     @ManyToOne
     private BenutzerProfil anbieter;
+    @OneToMany(mappedBy = "gebieter", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Gebot> gebote = new ArrayList<Gebot>();
 
     public String getBeschreibung() {
         return beschreibung;
@@ -92,5 +100,23 @@ public class Angebot {
 
     public BenutzerProfil getAnbieter() {
         return anbieter;
+    }
+
+    public List<Gebot> getGebote() {
+        return gebote;
+    }
+
+    public long getTopgebot() {
+        if (gebote.isEmpty())
+            return 0;
+        long top = gebote.get(0).getId();
+        long topBetrag = gebote.get(0).getBetrag();
+        for (Gebot geb : gebote) {
+            if (geb.getBetrag() > topBetrag) {
+                top = geb.getId();
+                topBetrag = geb.getBetrag();
+            }
+        }
+        return top;
     }
 }

@@ -12,4 +12,6 @@ public interface BenutzerprofilService {
     public void loescheBenutzerProfilMitId(Long loesch);
     public void fuegeAngebotHinzu(long id, Angebot angebot);
     public void loescheAngebot(long id);
+    public List<Angebot> alleAngebote();
+    public Optional<Angebot> findeAngebotMitId(long angebotid);
 }
