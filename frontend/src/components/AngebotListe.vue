@@ -13,8 +13,8 @@
 <script setup lang="ts">
     import { ref, computed } from 'vue';
     import AngebotListeItem from '@/components/AngebotListeItem.vue';
-    import {useFakeAngebot} from '@/services/useFakeAngebot';
+    import { useAngebot } from '@/services/useAngebot';
 
     const form = ref('')
-    const angebote = computed(() => useFakeAngebot().angebote.value.filter(e => e.beschreibung.toLowerCase().includes(form.value.toLowerCase()) || e.abholort.toLowerCase().includes(form.value.toLowerCase()) || e.anbietername.toLowerCase().includes(form.value.toLowerCase())))
+    const angebote = computed(() => useAngebot().angebote.angebotliste.filter(e => e.beschreibung.toLowerCase().includes(form.value.toLowerCase()) || e.abholort.toLowerCase().includes(form.value.toLowerCase()) || e.anbietername.toLowerCase().includes(form.value.toLowerCase())))
 </script>

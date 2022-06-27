@@ -27,6 +27,7 @@ dependencies {
 	implementation 'org.hibernate:hibernate-core:5.6.5.Final'
 	runtimeOnly 'com.h2database:h2'
 	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
 }
 
 tasks.named('test') {

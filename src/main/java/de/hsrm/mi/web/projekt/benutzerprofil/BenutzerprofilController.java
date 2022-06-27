@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import de.hsrm.mi.web.projekt.angebot.Angebot;
 import de.hsrm.mi.web.projekt.angebot.AngebotRepository;
+import de.hsrm.mi.web.projekt.messaging.BackendInfoService;
+import de.hsrm.mi.web.projekt.messaging.BackendOperation;
 
 @Controller
 @SessionAttributes(names = {"profil"})
@@ -29,6 +31,8 @@ public class BenutzerprofilController {
     BenutzerprofilRepository benRep;
     @Autowired
     AngebotRepository anRep;
+    @Autowired
+    BackendInfoService backendInfoService;
 
     Logger logger = LoggerFactory.getLogger(BenutzerprofilController.class);
 
@@ -81,6 +85,7 @@ public class BenutzerprofilController {
         long bpId = anRep.findById(id).get().getAnbieter().getId();
         bService.loescheAngebot(id);
         m.addAttribute("profil", bService.holeBenutzerProfilMitId(bpId).get());
+        backendInfoService.sendInfo("/angebot", BackendOperation.DELETE, id);
         return "redirect:/benutzerprofil";
     }
 
@@ -100,6 +105,7 @@ public class BenutzerprofilController {
         long bId = ((BenutzerProfil)m.getAttribute("profil")).getId();
         bService.fuegeAngebotHinzu(bId, angebot);
         m.addAttribute("profil", bService.holeBenutzerProfilMitId(bId).get());
+        backendInfoService.sendInfo("/angebot", BackendOperation.CREATE, angebot.getId());
         return "redirect:/benutzerprofil";
     }
 }

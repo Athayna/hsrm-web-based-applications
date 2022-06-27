@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
-    <GeoLink :lat="52.9849" :lon="9.5794">Visselhövede</GeoLink><br>
+    <GeoLink :lat="52.9849" :lon="9.5794">Visselhövede</GeoLink>
     <GeoLink :lat="52.9849" :lon="9.5794" :zoom="15" >Visselhövede</GeoLink>
     <AngebotListeItem :angebot="fakeAngebote.angebote.value[0]" />
     <b-button variant="outline-primary" @click="fakeAngebote.bietenSimulieren">bieten simulieren</b-button>
