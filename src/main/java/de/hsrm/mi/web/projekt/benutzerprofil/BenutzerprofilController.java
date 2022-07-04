@@ -1,5 +1,6 @@
 package de.hsrm.mi.web.projekt.benutzerprofil;
 
+import java.security.Principal;
 import java.time.LocalDate;
 
 import javax.validation.Valid;
@@ -21,6 +22,8 @@ import de.hsrm.mi.web.projekt.angebot.Angebot;
 import de.hsrm.mi.web.projekt.angebot.AngebotRepository;
 import de.hsrm.mi.web.projekt.messaging.BackendInfoService;
 import de.hsrm.mi.web.projekt.messaging.BackendOperation;
+import de.hsrm.mi.web.projekt.projektuser.ProjektUserService;
+import de.hsrm.mi.web.projekt.projektuser.ProjektUserServiceException;
 
 @Controller
 @SessionAttributes(names = {"profil"})
@@ -33,19 +36,28 @@ public class BenutzerprofilController {
     AngebotRepository anRep;
     @Autowired
     BackendInfoService backendInfoService;
+    @Autowired
+    private ProjektUserService pService;
 
     Logger logger = LoggerFactory.getLogger(BenutzerprofilController.class);
 
     @ModelAttribute("profil")
-    public void initProfil(Model m) {
-        BenutzerProfil p = new BenutzerProfil();
-        p.setName("Alexandra Müller");
-        p.setGeburtsdatum(LocalDate.of(1994, 12, 6));
-        p.setAdresse("Unter den Eichen 5, 65195 Wiesbaden");
-        p.setEmail("alexandra.mueller_1@student.hs-rm.de");
-        p.setLieblingsfarbe("#c79098");
-        p.setInteressen("Coding,  Computer Games , Petting Cats  ");
-        m.addAttribute("profil", p);
+    public void initProfil(Model m, Principal p) {
+        BenutzerProfil profil = new BenutzerProfil();
+        if(p != null){
+            try {
+                profil = pService.findeBenutzer(p.getName()).getBenutzerProfil();
+            } catch (ProjektUserServiceException e) {
+                logger.error("BenutzerprofilController: initProfil: Benutzer konnte nicht gefunden werden");
+            }
+        }
+        /*profil.setName("Alexandra Müller");
+        profil.setGeburtsdatum(LocalDate.of(1994, 12, 6));
+        profil.setAdresse("Unter den Eichen 5, 65195 Wiesbaden");
+        profil.setEmail("alexandra.mueller_1@student.hs-rm.de");
+        profil.setLieblingsfarbe("#c79098");
+        profil.setInteressen("Coding,  Computer Games , Petting Cats  ");*/
+        m.addAttribute("profil", profil);
     }
 
     @GetMapping("/benutzerprofil")

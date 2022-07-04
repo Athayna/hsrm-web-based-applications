@@ -12,6 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Version;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
@@ -23,6 +24,7 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import de.hsrm.mi.web.projekt.angebot.Angebot;
 import de.hsrm.mi.web.projekt.gebot.Gebot;
+import de.hsrm.mi.web.projekt.projektuser.ProjektUser;
 import de.hsrm.mi.web.projekt.validierung.Bunt;
 
 @Entity
@@ -46,8 +48,10 @@ public class BenutzerProfil {
     private double lat, lon;
     @OneToMany(mappedBy = "anbieter", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Angebot> angebot = new ArrayList<Angebot>();
-    @OneToMany(mappedBy = "gebieter", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "gebieter", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Gebot> gebote = new ArrayList<Gebot>();
+    @OneToOne(mappedBy = "benutzerProfil", cascade = CascadeType.REMOVE)
+    private ProjektUser projektUser;
 
     //Getters and Setters
     public String getName() {
@@ -133,6 +137,14 @@ public class BenutzerProfil {
     }
     public List<Gebot> getGebote() {
         return gebote;
+    }
+
+    public void setProjektUser(ProjektUser projektUser) {
+        this.projektUser = projektUser;
+    }
+
+    public ProjektUser getProjektUser() {
+        return projektUser;
     }
 
     @Override

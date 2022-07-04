@@ -29,6 +29,14 @@ angebot.editor.mindestpreis;Mindestpreis;Minimum price;Minimumprijs
 angebot.editor.ablaufzeitpunkt;Angebotsende;End of offer;Einde van het aanbot
 angebot.editor.abholort;Abholort;Pick-up location;Verzamellocatie
 angebot.editor.speichern;speichern;save;opslaan
+profil.logout;ausloggen;log out;uitloggen
+profil.eingeloggtals;Sie sind eingeloggt als;You are logged is as;Je bent ingelogd als
+registeruser.titel;Benutzer registrieren;register user;gebruiker registreren
+registeruser.ihredaten;Ihre Registrierung;Your registration;Uw inschrijving
+registeruser.username;Ihr gewählter Login-Name;Your chosen login name;Uw gekozen inlognaam
+registeruser.password;Losung;Password;Wachtwoord
+registeruser.speichern;abspeichern;save;opslaan
+registeruser.abbrechen;abbrechen;cancel;anuleren
 bunt.errormessage;Diese Farbe enthält zwei gleiche R/G/B-Anteile und ist daher nicht bunt genug;This color contains two matching R/G/B components and is therefore not colorful enough;Deze kleur bevat twee gelijke R/G/B componenten en is daarom niet kleurrijk genoeg
 profil.angebote.waerung;€;$;€
 profil.angebote.fuer;für mindestens;for at least;voor ten minste

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:text="#{registeruser.titel}"></title>
+        <link rel="icon" type="image/x-icon" href="https://www.hs-rm.de/typo3conf/ext/udg_package/Resources/Public/Images/Favicons/favicon.png">
+        <link rel="stylesheet" th:href="@{/profil.css}"/>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form th:action="@{/registrieren}" class="w3-container" style="width: 50%;" th:method="POST" th:object="${user}">
+            <div class="w3-panel w3-blue">
+                <h1 th:text="#{registeruser.titel}"></h1>
+                <a th:href="@{?sprache=en}">EN</a>
+                <a th:href="@{?sprache=de}">DE</a>
+                <a th:href="@{?sprache=nl}">NL</a>
+            </div>
+            <h1 th:text="#{registeruser.ihredaten}"></h1>
+
+            <p th:text="#{registeruser.username}"></p>
+            <input type="text" th:field="*{username}" th:errorclass="invalid" class="w3-input w3-border w3-round"></input>
+            <div th:if="${#fields.hasErrors('username')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('username')}" th:text="${err}" class="error"></li>
+                </ul>
+            </div>
+
+            <p th:text="#{registeruser.password}"></p>
+            <input type="password" th:field="*{password}" th:errorclass="invalid" class="w3-input w3-border w3-round"></input>
+            <div th:if="${#fields.hasErrors('password')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('password')}" th:text="${err}" class="error"></li>
+                </ul>
+            </div><br>
+            <button type="submit" class="w3-btn w3-blue" th:text="#{registeruser.speichern}"></button>
+            <button type="reset" class="w3-btn w3-blue" th:text="#{registeruser.abbrechen}"></button>
+        </form>
+    </body>
+</html>

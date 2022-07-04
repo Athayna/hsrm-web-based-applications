@@ -35,7 +35,7 @@ public class Angebot {
     private double lat, lon;
     @ManyToOne
     private BenutzerProfil anbieter;
-    @OneToMany(mappedBy = "gebieter", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "gebieter", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<Gebot> gebote = new ArrayList<Gebot>();
 
     public String getBeschreibung() {
