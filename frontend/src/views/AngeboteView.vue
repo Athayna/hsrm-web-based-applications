@@ -20,6 +20,6 @@
 
   onMounted( async () => {
     await update();
-    messages();
+    await messages();
   });
 </script>

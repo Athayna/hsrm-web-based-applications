@@ -97,7 +97,7 @@ public class BenutzerprofilController {
         long bpId = anRep.findById(id).get().getAnbieter().getId();
         bService.loescheAngebot(id);
         m.addAttribute("profil", bService.holeBenutzerProfilMitId(bpId).get());
-        backendInfoService.sendInfo("/angebot", BackendOperation.DELETE, id);
+        backendInfoService.sendInfo("angebot", BackendOperation.DELETE, id);
         return "redirect:/benutzerprofil";
     }
 
@@ -117,7 +117,7 @@ public class BenutzerprofilController {
         long bId = ((BenutzerProfil)m.getAttribute("profil")).getId();
         bService.fuegeAngebotHinzu(bId, angebot);
         m.addAttribute("profil", bService.holeBenutzerProfilMitId(bId).get());
-        backendInfoService.sendInfo("/angebot", BackendOperation.CREATE, angebot.getId());
+        backendInfoService.sendInfo("angebot", BackendOperation.CREATE, angebot.getId());
         return "redirect:/benutzerprofil";
     }
 }

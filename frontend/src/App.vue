@@ -1,13 +1,17 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import { useLogin } from '@/services/useLogin'
+const { logindata } = useLogin()
 </script>
 
 <template>
+  <h1 v-if="logindata.loggedin">Sie sind {{ logindata.username }}</h1>
   <header>
     <div class="wrapper">
       <nav>
         <RouterLink to="/">Angebote</RouterLink>
         <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/login">Login/Logout</RouterLink>
       </nav>
     </div>
   </header>

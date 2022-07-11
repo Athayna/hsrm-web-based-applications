@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form class="w3-container" style="width: 50%;" th:method="POST" th:object="${profil}">
+        <form th:action="@{/benutzerprofil/bearbeiten}" class="w3-container" style="width: 50%;" th:method="POST" th:object="${profil}">
             <div class="w3-panel w3-blue">
                 <h1 th:text="#{profilbearbeiten.titel}"></h1>
                 <a th:href="@{?sprache=en}">EN</a>

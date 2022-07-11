@@ -2,6 +2,9 @@ import { reactive, readonly } from "vue";
 import type { IAngebotListeItem } from "@/services/IAngebotListeItem";
 import { Client } from "@stomp/stompjs";
 
+import { useLogin } from '@/services/useLogin'
+const { logindata } = useLogin()
+
 interface IAngebotState {
     angebotliste: IAngebotListeItem[],
     errormessage: string
@@ -13,7 +16,8 @@ const angebotState: IAngebotState = reactive({
 });
 
 async function updateAngebote() {
-    fetch("api/angebot")
+    //bei allen fetch()- Backend-AnfragendasHeaderfeld“Authorization: Bearer jwttoken”mitgeschickt wird.
+    fetch("api/angebot", {headers: {'Authorization': `Bearer ${logindata.jwtToken}`}})
         .then(response => {
             if (!response.ok) {
                 throw new Error(response.statusText);
@@ -42,7 +46,8 @@ function receiveAngebotMessages() {
 
     stompclient.onConnect = (frame) => {
         stompclient.subscribe(destination, (message) => {
-            updateAngebote();
+            JSON.parse(message.body)
+            updateAngebote()
         });
     }
 
@@ -51,14 +56,6 @@ function receiveAngebotMessages() {
     }
 
     stompclient.activate();
-
-    try {
-        stompclient.publish({destination: destination,
-            body: "Hello World!"
-        });
-    } catch (error) {
-        console.log(error);
-    }
 }
 
 export function useAngebot() {

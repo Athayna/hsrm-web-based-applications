@@ -10,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form class="w3-container" style="width: 50%;" th:method="POST" th:object="${angebot}">
+        <form th:action="@{/benutzerprofil/angebot}" class="w3-container" style="width: 50%;" th:method="POST" th:object="${angebot}">
             <div class="w3-panel w3-blue">
                 <h1 th:text="#{angebot.editor.titel}"></h1>
                 <a th:href="@{?sprache=en}">EN</a>

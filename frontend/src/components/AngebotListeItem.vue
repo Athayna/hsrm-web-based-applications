@@ -2,7 +2,7 @@
     <b-table-simple hover small responsive>
         <b-tbody>
             <b-tr>
-                <b-td>{{angebot.beschreibung}}</b-td>
+                <b-td><RouterLink :to="'/gebot/' + angebot.angebotid">{{angebot.beschreibung}}</RouterLink></b-td>
                 <b-td>{{angebot.gebote}} Gebote</b-td>
                 <b-td>{{angebot.topgebot}} EUR</b-td>
                 <b-td><b-button v-b-toggle.collapse-1 variant="primary">more</b-button></b-td>
@@ -40,6 +40,7 @@
     import {defineProps} from 'vue';
     import type {IAngebotListeItem} from '@/services/IAngebotListeItem';
     import GeoLink from '@/components/GeoLink.vue';
+    import { RouterLink } from 'vue-router'
 
     const props = defineProps<{
         angebot: IAngebotListeItem
@@ -47,5 +48,4 @@
 
     const lat = props.angebot.lat as number;
     const lon = props.angebot.lon as number;
-
 </script>

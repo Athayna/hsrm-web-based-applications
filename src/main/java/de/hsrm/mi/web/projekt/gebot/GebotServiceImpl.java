@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import de.hsrm.mi.web.projekt.angebot.Angebot;
+import de.hsrm.mi.web.projekt.api.gebot.GetGebotResponseDTO;
 import de.hsrm.mi.web.projekt.benutzerprofil.BenutzerProfil;
 import de.hsrm.mi.web.projekt.benutzerprofil.BenutzerprofilServiceImpl;
+import de.hsrm.mi.web.projekt.messaging.BackendInfoService;
+import de.hsrm.mi.web.projekt.messaging.BackendOperation;
 
 @Service
 public class GebotServiceImpl implements GebotService {
@@ -17,6 +20,8 @@ public class GebotServiceImpl implements GebotService {
     GebotRepository gebRep;
     @Autowired
     BenutzerprofilServiceImpl bService;
+    @Autowired
+    BackendInfoService backendInfoService;
 
     @Override
     public List<Gebot> findeAlleGebote() {
@@ -45,6 +50,8 @@ public class GebotServiceImpl implements GebotService {
         gebot.setBetrag(betrag);
         gebot.setGebotzeitpunkt(LocalDateTime.now());
         gebRep.save(gebot);
+        GetGebotResponseDTO gebotDto = GetGebotResponseDTO.from(gebot);
+        backendInfoService.sendInfo("gebot", BackendOperation.CREATE, gebotDto.angebotid());
         return gebot;
     }
 
